@@ -7,6 +7,7 @@ using DotNetPOC.Business;
 using DotNetPOC.Resources;
 using DotNetPOC.Models;
 using DotNetPOC.Persistence;
+using DotNetPOC.Interfaces;
 using DotNetPOC.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,11 +20,11 @@ namespace DotNetPOC.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        private readonly UserService service;
+        private readonly IServiceUser service;
 
-        public UsersController(UserAppContext context, IMapper mapper)
+        public UsersController(IServiceUser service)
         {
-            this.service = new UserService(context, mapper);
+            this.service = service;
         }
 
         // GET api/values

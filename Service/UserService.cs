@@ -14,12 +14,12 @@ namespace DotNetPOC.Service
 {
     public class UserService : IServiceUser
     {
-        private readonly UserBO userBO;
+        private readonly IUserBO userBO;
         private readonly IMapper mapper;
 
-        public UserService(UserAppContext context, IMapper mapper)
+        public UserService(IUserBO userBO, IMapper mapper)
         {
-            this.userBO = new UserBO(context);
+            this.userBO = userBO;
             this.mapper = mapper;
         }
 

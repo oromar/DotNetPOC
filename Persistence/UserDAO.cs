@@ -9,7 +9,7 @@ using DotNetPOC.Models;
 
 namespace DotNetPOC.Persistence
 {
-    public class UserDAO
+    public class UserDAO : IUserDAO
     {
         private readonly UserAppContext context;
 

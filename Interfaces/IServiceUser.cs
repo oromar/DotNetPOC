@@ -11,5 +11,6 @@ namespace DotNetPOC.Interfaces
         void Delete(int id);
         IEnumerable<UserResource> Get();
         UserResource Get(int userId);
+        IEnumerable<UserResource> Get(string name, string email, string login);
     }
 }

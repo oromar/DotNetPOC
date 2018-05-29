@@ -1,4 +1,10 @@
-﻿using AutoMapper;
+﻿using DotNetPOC.Interfaces;
+using DotNetPOC.Service;
+using DotNetPOC.Models;
+using DotNetPOC.Business;
+
+
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,12 +32,18 @@ namespace DotNetPOC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services.AddAutoMapper();
 
             services.AddDbContext<Persistence.UserAppContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddMvc();
+
+            services.AddTransient<IServiceUser, UserService>();
+            services.AddTransient<IUserBO, UserBO>();
+            services.AddTransient<IUserDAO, UserDAO>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

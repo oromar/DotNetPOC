@@ -11,13 +11,13 @@ using DotNetPOC.Interfaces;
 
 namespace DotNetPOC.Business
 {
-    public class UserBO
+    public class UserBO : IUserBO
     {
-        private readonly UserDAO dao;
+        private readonly IUserDAO dao;
 
-        public UserBO(UserAppContext context)
+        public UserBO(IUserDAO dao)
         {
-            this.dao = new UserDAO(context);
+            this.dao = dao;
         }
 
         public User Save(User user)
