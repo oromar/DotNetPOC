@@ -1,5 +1,5 @@
 using AutoMapper;
-using DotNetPOC.DTO;
+using DotNetPOC.Resources;
 using DotNetPOC.Models;
 
 namespace DotNetPOC.Mapping

@@ -4,7 +4,6 @@ namespace DotNetPOC.Resources
 {
     public class UserResource
     {
-        [Required]
         public int UserId { get; set; }
         [Required]
         [StringLength(255)]
@@ -17,6 +16,7 @@ namespace DotNetPOC.Resources
         public string Password { get; set; }
         [Required]
         [StringLength(100)]
+        [RegularExpression(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]*[a-z0-9]))$")]
         public string Email { get; set; }
     }
 }

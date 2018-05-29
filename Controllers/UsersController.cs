@@ -21,7 +21,7 @@ namespace DotNetPOC.Controllers
     {
         private readonly UserService service;
 
-        public UsersController(Persistence.AppContext context, IMapper mapper)
+        public UsersController(UserAppContext context, IMapper mapper)
         {
             this.service = new UserService(context, mapper);
         }
@@ -37,7 +37,10 @@ namespace DotNetPOC.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(service.Get(id));
+            var user = service.Get(id);
+            if (user != null)
+                return Ok(service.Get(id));
+            return NotFound();
         }
 
         // POST api/values
@@ -48,7 +51,15 @@ namespace DotNetPOC.Controllers
             {
                 return BadRequest(ModelState);
             }
-            return Ok(service.Save(userResource));
+            try
+            {
+                return Created(string.Empty, service.Save(userResource));
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.InnerException.Message);
+            }
+            
         }
 
         // PUT api/values/5
@@ -69,6 +80,15 @@ namespace DotNetPOC.Controllers
         {
             service.Delete(id);
             return NoContent();
+        }
+
+        [HttpGet("search/{name?}/{email?}/{login?}")]
+        public IActionResult Get(string name = "", string email = "", string login = "")
+        {
+            var users = service.Get(name, email, login);
+            if (users != null)
+                return Ok(users);
+            return NotFound();
         }
     }
 }

@@ -28,8 +28,8 @@ namespace DotNetPOC
         {
             services.AddAutoMapper();
 
-            services.AddDbContext<Persistence.AppContext>(
-                    options => options.UseInMemoryDatabase("teste"));
+            services.AddDbContext<Persistence.UserAppContext>(
+                    options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddMvc();
         }

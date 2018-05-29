@@ -15,7 +15,7 @@ namespace DotNetPOC.Business
     {
         private readonly UserDAO dao;
 
-        public UserBO(Persistence.AppContext context)
+        public UserBO(UserAppContext context)
         {
             this.dao = new UserDAO(context);
         }
@@ -32,7 +32,6 @@ namespace DotNetPOC.Business
 
         public User Update(int id, User user)
         {
-            user.UserId = id;
             return dao.Update(id, user);
         }
 
@@ -44,6 +43,11 @@ namespace DotNetPOC.Business
         public IEnumerable<User> Get()
         {
             return dao.Get();
+        }
+
+        public IEnumerable<User> Get(string name, string email, string login)
+        {
+            return dao.Get(name, email, login);
         }
     }
 }

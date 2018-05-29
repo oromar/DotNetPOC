@@ -17,7 +17,7 @@ namespace DotNetPOC.Service
         private readonly UserBO userBO;
         private readonly IMapper mapper;
 
-        public UserService(AppContext context, IMapper mapper)
+        public UserService(UserAppContext context, IMapper mapper)
         {
             this.userBO = new UserBO(context);
             this.mapper = mapper;
@@ -34,21 +34,31 @@ namespace DotNetPOC.Service
             return mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
         }
 
-        public User Get(int userId)
+        public UserResource Get(int userId)
         {
-            return userBO.Get(userId);
+            var user = userBO.Get(userId);
+            return mapper.Map<User, UserResource>(user);
         }
 
-        public User Save(UserResource userResource)
+        public UserResource Save(UserResource userResource)
         {
             var user = mapper.Map<UserResource, User>(userResource);
-            return userBO.Save(user);
+            user = userBO.Save(user);
+            return mapper.Map<User, UserResource>(user);
         }
 
-        public User Update(int id, UserResource userResource)
+        public UserResource Update(int id, UserResource userResource)
         {
             var user = mapper.Map<UserResource, User>(userResource);
-            return userBO.Update(id, user);
+            user.UserId = id;
+            user = userBO.Update(id, user);
+            return mapper.Map<User, UserResource>(user);
+        }
+
+        public IEnumerable<UserResource> Get(string name, string email, string login)
+        {
+            var users = userBO.Get(name, email, login);
+            return mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
         }
     }
 }

@@ -6,10 +6,10 @@ namespace DotNetPOC.Interfaces
 {
     public interface IServiceUser
     {
-        User Save(UserResource user);
-        User Update(int id, UserResource user);
+        UserResource Save(UserResource user);
+        UserResource Update(int id, UserResource user);
         void Delete(int id);
         IEnumerable<UserResource> Get();
-        User Get(int userId);
+        UserResource Get(int userId);
     }
 }

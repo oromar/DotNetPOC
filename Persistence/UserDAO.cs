@@ -11,9 +11,9 @@ namespace DotNetPOC.Persistence
 {
     public class UserDAO
     {
-        private readonly AppContext context;
+        private readonly UserAppContext context;
 
-        public UserDAO(AppContext context)
+        public UserDAO(UserAppContext context)
         {
             this.context = context;
         }
@@ -37,7 +37,7 @@ namespace DotNetPOC.Persistence
         public User Save(User user)
         {
             context.Users.Add(user);
-            context.SaveChanges();
+            context.SaveChanges();            
             return user;
         }
 
@@ -46,6 +46,14 @@ namespace DotNetPOC.Persistence
             context.Users.Update(user);
             context.SaveChanges();
             return user;
+        }
+
+        public IEnumerable<User> Get(string name, string email, string login)
+        {
+            return context.Users.Where(a => string.IsNullOrEmpty(name) || a.Name.Contains(name))
+                                .Where(a => string.IsNullOrEmpty(email) || a.Email.Contains(email))
+                                .Where(a => string.IsNullOrEmpty(login) || a.Login.Contains(login))
+                                .ToList();
         }
     }
 }
