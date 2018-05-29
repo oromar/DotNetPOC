@@ -14,7 +14,7 @@ namespace DotNetPOC.Persistence
         {
             builder.Entity<User>(e => e.HasIndex(a => a.Email).IsUnique(true));
         }
-
+        
         public DbSet<User> Users { get; set; }
     }
 }

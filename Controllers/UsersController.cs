@@ -53,7 +53,9 @@ namespace DotNetPOC.Controllers
             }
             try
             {
-                return Created(string.Empty, service.Save(userResource));
+                var savedUser = service.Save(userResource);
+
+                return Created(string.Format("/api/users/{0}", savedUser.UserId), savedUser);
             }
             catch(Exception e)
             {
