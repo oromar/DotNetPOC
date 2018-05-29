@@ -1,0 +1,11 @@
+D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\DotNetPOC.deps.json
+D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\DotNetPOC.runtimeconfig.json
+D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\DotNetPOC.runtimeconfig.dev.json
+D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\DotNetPOC.dll
+D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\DotNetPOC.pdb
+D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.csprojResolveAssemblyReference.cache
+D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.csproj.CoreCompileInputs.cache
+D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.AssemblyInfoInputs.cache
+D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.AssemblyInfo.cs
+D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.dll
+D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.pdb
