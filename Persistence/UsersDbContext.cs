@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotNetPOC.Persistence
 {
-    public class UsersDbContext : DbContext
+    public class AppContext : DbContext
     {
-        public UsersDbContext(DbContextOptions options) 
+        public AppContext(DbContextOptions options) 
         : base(options)
         {
         }

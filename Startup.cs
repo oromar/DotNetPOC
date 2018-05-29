@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,11 @@ namespace DotNetPOC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UsersDbContext>(
+            services.AddAutoMapper();
+
+            services.AddDbContext<Persistence.AppContext>(
                     options => options.UseInMemoryDatabase("teste"));
+
             services.AddMvc();
         }
 

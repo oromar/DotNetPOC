@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetPOC.Models
+namespace DotNetPOC.Resources
 {
-    public class User
+    public class UserResource
     {
-        [Required]        
+        [Required]
         public int UserId { get; set; }
         [Required]
         [StringLength(255)]
