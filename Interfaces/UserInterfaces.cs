@@ -1,5 +1,6 @@
 using DotNetPOC.Models;
 using System.Collections.Generic;
+using DotNetPOC.Resources;
 
 namespace DotNetPOC.Interfaces
 {
@@ -22,4 +23,15 @@ namespace DotNetPOC.Interfaces
     {
 
     }
+    
+    public interface IServiceUser
+    {
+        UserResource Save(UserResource user);
+        UserResource Update(int id, UserResource user);
+        void Delete(int id);
+        IEnumerable<UserResource> Get();
+        UserResource Get(int userId);
+        IEnumerable<UserResource> Get(string name, string email, string login);
+    }
+
 }

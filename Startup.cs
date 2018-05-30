@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using DotNetPOC.Persistence;
+using DotNetPOC.Utils;
 
 namespace DotNetPOC
 {
@@ -32,18 +33,21 @@ namespace DotNetPOC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddAutoMapper();
 
             services.AddDbContext<Persistence.UserAppContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddDbContext<Persistence.AuthContext>(
+                    options => options.UseSqlServer(Configuration.GetConnectionString("Auth")));
 
             services.AddMvc();
 
             services.AddTransient<IServiceUser, UserService>();
             services.AddTransient<IUserBO, UserBO>();
             services.AddTransient<IUserDAO, UserDAO>();
+            services.AddTransient<IProgramGroupBO, ProgramGroupBO>();
+            services.AddTransient<IProgramGroupDAO, ProgramGroupDAO>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
