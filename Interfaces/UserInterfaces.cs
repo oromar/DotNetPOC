@@ -13,17 +13,14 @@ namespace DotNetPOC.Interfaces
         User Get(int userId);
         IEnumerable<User> Get(string name, string email, string login);
     }
-
     public interface IUserDAO : IUserOperations
     {
 
     }
-
     public interface IUserBO : IUserOperations
     {
 
     }
-    
     public interface IServiceUser
     {
         UserResource Save(UserResource user);

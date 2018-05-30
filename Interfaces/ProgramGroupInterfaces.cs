@@ -11,7 +11,6 @@ namespace DotNetPOC.Interfaces
         void Set(int id);
         ProgramGroupResource GetActual();
     }
-
     public interface IProgramGroupOperations
     {
         ProgramGroup Save(ProgramGroup programGroup);
@@ -19,11 +18,9 @@ namespace DotNetPOC.Interfaces
         void Set(int id);
         ProgramGroup GetActual();
     }
-
     public interface IProgramGroupBO : IProgramGroupOperations
     {
     }
-
     public interface IProgramGroupDAO : IProgramGroupOperations
     {
     }

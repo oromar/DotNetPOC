@@ -16,12 +16,10 @@ namespace DotNetPOC.Filters
         {
             this.service = service;
         }
-
         public void OnActionExecuted(ActionExecutedContext context)
         {
             //does nothing            
         }
-
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var programGroup = service.GetActual();
