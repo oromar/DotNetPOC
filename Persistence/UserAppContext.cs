@@ -20,12 +20,12 @@ namespace DotNetPOC.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            var key = "Default";
+            var connectionStringKey = "Default";
             
             if (httpAccessor != null && httpAccessor.HttpContext !=null && httpAccessor.HttpContext.Items[Constants.ConnectionString] != null) 
-                key = httpAccessor.HttpContext.Items[Constants.ConnectionString].ToString();
+                connectionStringKey = httpAccessor.HttpContext.Items[Constants.ConnectionString].ToString();
 
-            builder.UseSqlServer(configuration.GetConnectionString(key));
+            builder.UseSqlServer(configuration.GetConnectionString(connectionStringKey));
 
             base.OnConfiguring(builder);
         }
