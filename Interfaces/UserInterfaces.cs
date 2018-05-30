@@ -33,5 +33,4 @@ namespace DotNetPOC.Interfaces
         UserResource Get(int userId);
         IEnumerable<UserResource> Get(string name, string email, string login);
     }
-
 }

@@ -9,7 +9,6 @@ namespace DotNetPOC.Interfaces
         ProgramGroupResource Save(ProgramGroupResource programGroupResource);
         IEnumerable<ProgramGroupResource> Get();
         void Set(int id);
-
         ProgramGroupResource GetActual();
     }
 

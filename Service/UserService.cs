@@ -22,31 +22,26 @@ namespace DotNetPOC.Service
             this.userBO = userBO;
             this.mapper = mapper;
         }
-
         public void Delete(int id)
         {
             userBO.Delete(id);
         }
-
         public IEnumerable<UserResource> Get()
         {
             var users =  userBO.Get();
             return mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
         }
-
         public UserResource Get(int userId)
         {
             var user = userBO.Get(userId);
             return mapper.Map<User, UserResource>(user);
         }
-
         public UserResource Save(UserResource userResource)
         {
             var user = mapper.Map<UserResource, User>(userResource);
             user = userBO.Save(user);
             return mapper.Map<User, UserResource>(user);
         }
-
         public UserResource Update(int id, UserResource userResource)
         {
             var user = mapper.Map<UserResource, User>(userResource);
@@ -54,7 +49,6 @@ namespace DotNetPOC.Service
             user = userBO.Update(id, user);
             return mapper.Map<User, UserResource>(user);
         }
-
         public IEnumerable<UserResource> Get(string name, string email, string login)
         {
             var users = userBO.Get(name, email, login);

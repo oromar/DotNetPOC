@@ -23,12 +23,10 @@ namespace DotNetPOC.Business
         {
             return dao.Get();
         }
-
         public void Set(int id)
         {
             dao.Set(id);
         }
-
         public ProgramGroup GetActual()
         {
             return dao.GetActual();

@@ -19,32 +19,26 @@ namespace DotNetPOC.Business
         {
             this.dao = dao;
         }
-
         public User Save(User user)
         {
             return dao.Save(user);
         }
-
         public void Delete(int id)
         {
             dao.Delete(id);
         }
-
         public User Update(int id, User user)
         {
             return dao.Update(id, user);
         }
-
         public User Get(int id)
         {
             return dao.Get(id);
         }
-
         public IEnumerable<User> Get()
         {
             return dao.Get();
         }
-
         public IEnumerable<User> Get(string name, string email, string login)
         {
             return dao.Get(name, email, login);

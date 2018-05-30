@@ -28,15 +28,14 @@ namespace DotNetPOC.Controllers
         {
             this.service = service;
         }
-
-        // GET api/values
+        // GET api/users
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(service.Get());
         }
 
-        // GET api/values/5
+        // GET api/users/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -46,7 +45,7 @@ namespace DotNetPOC.Controllers
             return NotFound();
         }
 
-        // POST api/values
+        // POST api/users
         [HttpPost]
         public IActionResult Post([FromBody]UserResource userResource)
         {
@@ -67,7 +66,7 @@ namespace DotNetPOC.Controllers
             
         }
 
-        // PUT api/values/5
+        // PUT api/users/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]UserResource userResource)
         {
@@ -79,7 +78,7 @@ namespace DotNetPOC.Controllers
             return Ok(service.Update(id, userResource));
         }
 
-        // DELETE api/values/5
+        // DELETE api/users/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

@@ -21,7 +21,6 @@ namespace DotNetPOC.Persistence
             this.configuration = configuration;
             this.httpAccessor = httpAccessor;
         }
-
         public void Delete(int id)
         {
             using(var context = new UserAppContext(configuration, httpAccessor))
@@ -30,7 +29,6 @@ namespace DotNetPOC.Persistence
                 context.SaveChanges();    
             }
         }
-
         public IEnumerable<User> Get()
         {
             using(var context = new UserAppContext(configuration, httpAccessor))
@@ -38,7 +36,6 @@ namespace DotNetPOC.Persistence
                 return context.Users.ToList();
             }
         }
-
         public User Get(int userId)
         {
             using(var context = new UserAppContext(configuration, httpAccessor))
@@ -46,7 +43,6 @@ namespace DotNetPOC.Persistence
                 return context.Users.Find(userId);
             }
         }
-
         public User Save(User user)
         {
             using(var context = new UserAppContext(configuration, httpAccessor))
@@ -56,7 +52,6 @@ namespace DotNetPOC.Persistence
                 return user;
             }
         }
-
         public User Update(int id, User user)
         {
             using(var context = new UserAppContext(configuration, httpAccessor))
@@ -66,7 +61,6 @@ namespace DotNetPOC.Persistence
                 return user;
             }
         }
-
         public IEnumerable<User> Get(string name, string email, string login)
         {
             using(var context = new UserAppContext(configuration, httpAccessor))

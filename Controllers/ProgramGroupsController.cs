@@ -12,13 +12,11 @@ namespace DotNetPOC.Controllers
         {
             this.service = service;
         }        
-
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(service.Get());
         }
-
         [HttpPost]
         public IActionResult Post([FromBody]ProgramGroupResource programGroupResource)
         {
@@ -29,7 +27,6 @@ namespace DotNetPOC.Controllers
 
             return Ok(service.Save(programGroupResource));
         }
-
         [HttpPost("{id}")]
         public IActionResult Post(int id)
         {

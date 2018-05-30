@@ -11,6 +11,7 @@ namespace DotNetPOC.Mapping
         public MapProfile()
         {
             CreateMap<User, UserResource>();
+            
             CreateMap<ProgramGroupResource, ProgramGroup>()
             .ForMember(
                     d => d.CreatedAt, 
