@@ -2,8 +2,6 @@
 using DotNetPOC.Service;
 using DotNetPOC.Models;
 using DotNetPOC.Business;
-
-
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
