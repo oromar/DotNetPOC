@@ -14,7 +14,7 @@ namespace DotNetPOC.Mapping
             CreateMap<ProgramGroupResource, ProgramGroup>()
             .ForMember(
                     d => d.CreatedAt, 
-                    opt => opt.MapFrom(src => DateTime.Parse(long.Parse(src.CreatedAt).ToString())));
+                    opt => opt.MapFrom(src => TimeConverter.UnixTimeStampToDateTime(long.Parse(src.CreatedAt))));
                     
             CreateMap<ProgramGroup, ProgramGroupResource>()
             .ForMember(

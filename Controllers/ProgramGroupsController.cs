@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotNetPOC.Controllers
 {
     [Route("api/[controller]")]
-    public class ProgramGroupController : Controller
+    public class ProgramGroupsController : Controller
     {
         private readonly IProgramGroupService service;
 
-        public ProgramGroupController(IProgramGroupService service)
+        public ProgramGroupsController(IProgramGroupService service)
         {
             this.service = service;
         }        
@@ -42,8 +42,5 @@ namespace DotNetPOC.Controllers
 
             return Ok();
         }
-
-        
-    
     }
 }

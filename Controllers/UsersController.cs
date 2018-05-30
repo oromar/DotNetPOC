@@ -9,6 +9,7 @@ using DotNetPOC.Models;
 using DotNetPOC.Persistence;
 using DotNetPOC.Interfaces;
 using DotNetPOC.Service;
+using DotNetPOC.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 /*
@@ -18,6 +19,7 @@ Class responsible to validate request parameters and call service layer
 namespace DotNetPOC.Controllers
 {
     [Route("api/[controller]")]
+    [ServiceFilter(typeof(AuthorizationFilter))]
     public class UsersController : Controller
     {
         private readonly IServiceUser service;

@@ -24,11 +24,26 @@ namespace DotNetPOC.Persistence
         }
         public void Set(int id)
         {
-            throw new System.NotImplementedException();
+            var app = context.AppStatus.OrderBy(a => a.AppStatusId).FirstOrDefault();
+            if (app == null)
+            {
+                app = new AppStatus();
+                context.AppStatus.Add(app);
+                context.SaveChanges();
+            }
+            app.ActualProgramGroupId = id;
+            context.SaveChanges();
         }
         public ProgramGroup GetActual()
         {
-             throw new System.NotImplementedException();
+            var app = context.AppStatus.OrderBy(a => a.AppStatusId).FirstOrDefault();
+
+            if (app != null)
+            {
+                return context.ProgramGroups.First(a => a.ProgramGroupId == app.ActualProgramGroupId);
+            }
+            return context.ProgramGroups
+                .FirstOrDefault (a => a.ConnectionStringKey == "Default");
         }
     }
 }

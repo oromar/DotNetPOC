@@ -1,29 +1,32 @@
 using DotNetPOC.Models;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static DotNetPOC.Utils.Utils;
+using Microsoft.AspNetCore.Http;
+using DotNetPOC.Utils;
 
 namespace DotNetPOC.Persistence
 {
     public class UserAppContext : DbContext
     {
-        public UserAppContext(IConfiguration configuration)
-        {
-            this.Configuration = configuration;
+        private readonly IConfiguration configuration;
+        private readonly IHttpContextAccessor httpAccessor;
 
-        }
-        public IConfiguration Configuration { get; set; }
-
-        public UserAppContext(DbContextOptions options, IConfiguration configuration)
-        : base(options)
+        public UserAppContext(IConfiguration configuration, IHttpContextAccessor httpAccessor)
         {
-            this.Configuration = configuration;
-            Database.EnsureCreated();
+            this.configuration = configuration;
+            this.httpAccessor = httpAccessor;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer(Configuration.GetConnectionString(GetCurrentConnectionStringKey()));
+            var key = "Default";
+            
+            if (httpAccessor != null && httpAccessor.HttpContext !=null && httpAccessor.HttpContext.Items[Constants.ConnectionString] != null) 
+                key = httpAccessor.HttpContext.Items[Constants.ConnectionString].ToString();
+
+            builder.UseSqlServer(configuration.GetConnectionString(key));
+
             base.OnConfiguring(builder);
         }
 

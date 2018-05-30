@@ -5,10 +5,11 @@ namespace DotNetPOC.Persistence
 {
     public class AuthContext : DbContext
     {
-        public AuthContext(DbContextOptions options) : base(options)
+        public AuthContext(DbContextOptions<AuthContext> options) : base(options)
         {
-            Database.EnsureCreated();
         }
         public DbSet<ProgramGroup> ProgramGroups { get; set; }
+        public DbSet<AppStatus> AppStatus { get; set; }
+        
     }
 }
