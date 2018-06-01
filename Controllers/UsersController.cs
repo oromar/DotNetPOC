@@ -10,6 +10,7 @@ using DotNetPOC.Persistence;
 using DotNetPOC.Interfaces;
 using DotNetPOC.Filters;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 /*
 Class responsible to validate request parameters and call service layer
@@ -22,15 +23,18 @@ namespace DotNetPOC.Controllers
     public class UsersController : Controller
     {
         private readonly IDomainUser domain;
+        private readonly ILogger<UsersController> logger;
 
-        public UsersController(IDomainUser domain)
+        public UsersController(IDomainUser domain, ILogger<UsersController> logger)
         {
             this.domain = domain;
+            this.logger = logger;
         }
         // GET api/users
         [HttpGet]
         public IActionResult Get()
         {
+            logger.LogInformation("Get Users");
             return Ok(domain.Get());
         }
 
