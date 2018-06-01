@@ -18,6 +18,7 @@ using DotNetPOC.Utils;
 using DotNetPOC.Filters;
 using Microsoft.AspNetCore.Http;
 using DotNetPOC.Domain;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace DotNetPOC
 {
@@ -56,6 +57,16 @@ namespace DotNetPOC
             services.AddTransient<AuthorizationFilter>();
 
             services.AddSingleton<Microsoft.AspNetCore.Http.IHttpContextAccessor, Microsoft.AspNetCore.Http.HttpContextAccessor>();
+
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new Info
+                    {
+                        Version = "v1",
+                        Title = "SmartSchools Server"                        
+                    });
+                    c.IncludeXmlComments(@"bin\Debug\netcoreapp2.0\DotNetPOC.xml");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +76,14 @@ namespace DotNetPOC
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SmartSchools v1");                                
+            });
+
             app.UseMvc();
         }
     }

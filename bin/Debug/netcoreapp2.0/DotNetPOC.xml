@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetPOC</name>
+    </assembly>
+    <members>
+        <member name="M:DotNetPOC.Controllers.UsersController.Get">
+            <summary>
+            Get All Users.
+            </summary>
+        </member>
+        <member name="M:DotNetPOC.Controllers.UsersController.Get(System.Int32)">
+            <summary>
+            Gets a specific User.
+            </summary>
+            <param name="id"></param>    
+        </member>
+        <member name="M:DotNetPOC.Controllers.UsersController.Post(DotNetPOC.Resources.UserResource)">
+            <summary>
+            Create an User.
+            </summary>
+            <param name="userResource"></param>    
+            <response code="201">UserResource</response>
+            <response code="400">Invalid parameters</response>
+            <response code="401">Authentication required</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:DotNetPOC.Controllers.UsersController.Put(System.Int32,DotNetPOC.Resources.UserResource)">
+            <summary>
+            Updates a specific User.
+            </summary>
+            <param name="id"></param>    
+            <param name="userResource"></param>    
+        </member>
+        <member name="M:DotNetPOC.Controllers.UsersController.Delete(System.Int32)">
+            <summary>
+            Deletes a specific User.
+            </summary>
+            <param name="id"></param>    
+        </member>
+        <member name="M:DotNetPOC.Controllers.UsersController.Get(System.String,System.String,System.String)">
+            <summary>
+            Search Users.
+            </summary>
+            <param name="name"></param>    
+            <param name="email"></param>    
+            <param name="login"></param>    
+        </member>
+        <member name="M:DotNetPOC.Utils.TimeConverter.ConvertDaysInHours(System.Int32)">
+            <summary>
+            Converts days in hours.
+            </summary>
+            <returns> Quantity of hours according to specified quantity of days </returns>
+        </member>
+    </members>
+</doc>

@@ -10,3 +10,4 @@ D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.Ass
 D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.dll
 D:\Area de Trabalho\dot-net-core\DotNetPOC\obj\Debug\netcoreapp2.0\DotNetPOC.pdb
 D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\nlog.config
+D:\Area de Trabalho\dot-net-core\DotNetPOC\bin\Debug\netcoreapp2.0\DotNetPOC.xml

@@ -31,6 +31,9 @@ namespace DotNetPOC.Controllers
             this.logger = logger;
         }
         // GET api/users
+        /// <summary>
+        /// Get All Users.
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -39,6 +42,10 @@ namespace DotNetPOC.Controllers
         }
 
         // GET api/users/5
+        /// <summary>
+        /// Gets a specific User.
+        /// </summary>
+        /// <param name="id"></param>    
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -49,6 +56,16 @@ namespace DotNetPOC.Controllers
         }
 
         // POST api/users
+        /// <summary>
+        /// Create an User.
+        /// </summary>
+        /// <param name="userResource"></param>    
+        /// <response code="201">UserResource</response>
+        /// <response code="400">Invalid parameters</response>
+        /// <response code="401">Authentication required</response>
+        /// <response code="500">Internal Server Error</response>
+        [ProducesResponseType(typeof(UserResource), 201)]
+        [ProducesResponseType(typeof(IDictionary<string, string>), 400)]        
         [HttpPost]
         public IActionResult Post([FromBody]UserResource userResource)
         {
@@ -70,6 +87,11 @@ namespace DotNetPOC.Controllers
         }
 
         // PUT api/users/5
+        /// <summary>
+        /// Updates a specific User.
+        /// </summary>
+        /// <param name="id"></param>    
+        /// <param name="userResource"></param>    
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]UserResource userResource)
         {
@@ -82,6 +104,10 @@ namespace DotNetPOC.Controllers
         }
 
         // DELETE api/users/5
+        /// <summary>
+        /// Deletes a specific User.
+        /// </summary>
+        /// <param name="id"></param>    
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -89,6 +115,12 @@ namespace DotNetPOC.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Search Users.
+        /// </summary>
+        /// <param name="name"></param>    
+        /// <param name="email"></param>    
+        /// <param name="login"></param>    
         [HttpGet("search/{name?}/{email?}/{login?}")]
         public IActionResult Get(string name = "", string email = "", string login = "")
         {
