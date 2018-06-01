@@ -4,13 +4,13 @@ using DotNetPOC.Interfaces;
 using DotNetPOC.Models;
 using DotNetPOC.Resources;
 
-namespace DotNetPOC.Service
+namespace DotNetPOC.Domain
 {
-    public class ProgramGroupService : IProgramGroupService
+    public class ProgramGroupDomain : IProgramGroupDomain
     {
         private readonly IProgramGroupBO programGroupBO;
         private readonly IMapper mapper;
-        public ProgramGroupService(IProgramGroupBO programGroupBO, IMapper mapper)
+        public ProgramGroupDomain(IProgramGroupBO programGroupBO, IMapper mapper)
         {
             this.mapper = mapper;
             this.programGroupBO = programGroupBO;

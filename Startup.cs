@@ -1,5 +1,4 @@
 ﻿using DotNetPOC.Interfaces;
-using DotNetPOC.Service;
 using DotNetPOC.Models;
 using DotNetPOC.Business;
 using AutoMapper;
@@ -18,6 +17,7 @@ using DotNetPOC.Persistence;
 using DotNetPOC.Utils;
 using DotNetPOC.Filters;
 using Microsoft.AspNetCore.Http;
+using DotNetPOC.Domain;
 
 namespace DotNetPOC
 {
@@ -47,10 +47,10 @@ namespace DotNetPOC
 
             services.AddMvc();
 
-            services.AddTransient<IServiceUser, UserService>();
+            services.AddTransient<IDomainUser, UserDomain>();
             services.AddTransient<IUserBO, UserBO>();
             services.AddTransient<IUserDAO, UserDAO>();
-            services.AddTransient<IProgramGroupService, ProgramGroupService>();
+            services.AddTransient<IProgramGroupDomain, ProgramGroupDomain>();
             services.AddTransient<IProgramGroupBO, ProgramGroupBO>();
             services.AddTransient<IProgramGroupDAO, ProgramGroupDAO>();
             services.AddTransient<AuthorizationFilter>();

@@ -6,16 +6,16 @@ namespace DotNetPOC.Controllers
     [Route("api/[controller]")]
     public class ProgramGroupsController : Controller
     {
-        private readonly IProgramGroupService service;
+        private readonly IProgramGroupDomain domain;
 
-        public ProgramGroupsController(IProgramGroupService service)
+        public ProgramGroupsController(IProgramGroupDomain domain)
         {
-            this.service = service;
+            this.domain = domain;
         }        
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(service.Get());
+            return Ok(domain.Get());
         }
         [HttpPost]
         public IActionResult Post([FromBody]ProgramGroupResource programGroupResource)
@@ -25,7 +25,7 @@ namespace DotNetPOC.Controllers
                 return BadRequest(ModelState);
             }
 
-            return Ok(service.Save(programGroupResource));
+            return Ok(domain.Save(programGroupResource));
         }
         [HttpPost("{id}")]
         public IActionResult Post(int id)
@@ -35,7 +35,7 @@ namespace DotNetPOC.Controllers
                 return BadRequest(ModelState);
             }
 
-            service.Set(id);
+            domain.Set(id);
 
             return Ok();
         }

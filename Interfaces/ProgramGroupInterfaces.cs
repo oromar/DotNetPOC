@@ -4,7 +4,7 @@ using DotNetPOC.Resources;
 
 namespace DotNetPOC.Interfaces
 {
-    public interface IProgramGroupService
+    public interface IProgramGroupDomain
     {
         ProgramGroupResource Save(ProgramGroupResource programGroupResource);
         IEnumerable<ProgramGroupResource> Get();

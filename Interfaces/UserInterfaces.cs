@@ -21,7 +21,7 @@ namespace DotNetPOC.Interfaces
     {
 
     }
-    public interface IServiceUser
+    public interface IDomainUser
     {
         UserResource Save(UserResource user);
         UserResource Update(int id, UserResource user);

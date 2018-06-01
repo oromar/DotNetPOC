@@ -10,14 +10,14 @@ using DotNetPOC.Resources;
     Class responsible to mapper resources to models and handle inter-features validations 
  */
 
-namespace DotNetPOC.Service
+namespace DotNetPOC.Domain
 {
-    public class UserService : IServiceUser
+    public class UserDomain : IDomainUser
     {
         private readonly IUserBO userBO;
         private readonly IMapper mapper;
 
-        public UserService(IUserBO userBO, IMapper mapper)
+        public UserDomain(IUserBO userBO, IMapper mapper)
         {
             this.userBO = userBO;
             this.mapper = mapper;

@@ -8,7 +8,6 @@ using DotNetPOC.Resources;
 using DotNetPOC.Models;
 using DotNetPOC.Persistence;
 using DotNetPOC.Interfaces;
-using DotNetPOC.Service;
 using DotNetPOC.Filters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,26 +21,26 @@ namespace DotNetPOC.Controllers
     [ServiceFilter(typeof(AuthorizationFilter))]
     public class UsersController : Controller
     {
-        private readonly IServiceUser service;
+        private readonly IDomainUser domain;
 
-        public UsersController(IServiceUser service)
+        public UsersController(IDomainUser domain)
         {
-            this.service = service;
+            this.domain = domain;
         }
         // GET api/users
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(service.Get());
+            return Ok(domain.Get());
         }
 
         // GET api/users/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var user = service.Get(id);
+            var user = domain.Get(id);
             if (user != null)
-                return Ok(service.Get(id));
+                return Ok(domain.Get(id));
             return NotFound();
         }
 
@@ -55,7 +54,7 @@ namespace DotNetPOC.Controllers
             }
             try
             {
-                var savedUser = service.Save(userResource);
+                var savedUser = domain.Save(userResource);
 
                 return Created(string.Format("/api/users/{0}", savedUser.UserId), savedUser);
             }
@@ -75,21 +74,21 @@ namespace DotNetPOC.Controllers
                 return BadRequest(ModelState);
             }
 
-            return Ok(service.Update(id, userResource));
+            return Ok(domain.Update(id, userResource));
         }
 
         // DELETE api/users/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            service.Delete(id);
+            domain.Delete(id);
             return NoContent();
         }
 
         [HttpGet("search/{name?}/{email?}/{login?}")]
         public IActionResult Get(string name = "", string email = "", string login = "")
         {
-            var users = service.Get(name, email, login);
+            var users = domain.Get(name, email, login);
             if (users != null)
                 return Ok(users);
             return NotFound();
